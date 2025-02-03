@@ -440,7 +440,7 @@ function format_date(date) {
 
         console.log(games);
 
-        axios.put('http://localhost:4001/v1/games?status=live', games, {
+        axios.put('https://api.fragscore.com/v1/games?status=live', games, {
           headers: {
             'fragscore-key': '123',
           },
@@ -449,7 +449,7 @@ function format_date(date) {
     } catch (error) {
       console.log('Şu anda canlı maç yok');
 
-      axios.put('http://localhost:4001/v1/games?status=live', [], {
+      axios.put('https://api.fragscore.com/v1/games?status=live', [], {
         headers: {
           'fragscore-key': '123',
         },

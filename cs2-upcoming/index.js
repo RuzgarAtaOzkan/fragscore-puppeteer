@@ -99,7 +99,7 @@ puppeteer.use(StealthPlugin());
     });
 
     const res = await axios.put(
-      'http://localhost:4001/v1/games?status=upcoming',
+      'https://api.fragscore.com/v1/games?status=upcoming',
       matchesByDate,
       { headers: { 'fragscore-key': '123' } }
     );
