@@ -93,6 +93,11 @@ function format_date(date) {
             ?.innerText.trim()
             .replace(/[()]/g, '');
 
+          // Extract tournament logo URL
+          const tournamentLogo = document
+            .querySelector('.matchEventLogoContainer img')
+            ?.getAttribute('src');
+
           return {
             matchLink,
             status,
@@ -100,6 +105,7 @@ function format_date(date) {
             team2Score: team2Score || '0',
             team1RoundScore: team1RoundScore || '0',
             team2RoundScore: team2RoundScore || '0',
+            tournamentLogo,
           };
         });
       }, liveMatchesSelector);
@@ -144,10 +150,6 @@ function format_date(date) {
               const matchTime = timeElement?.innerText || 'Unknown';
               const matchDate = dateElement?.innerText || 'Unknown';
               const tournamentName = tournamentElement?.innerText || 'Unknown';
-              const tournamentLogoElement = document.querySelector(
-                '.matchEventLogoContainer img'
-              );
-              const tournamentLogo = tournamentLogoElement?.src || '';
 
               const streams = Array.from(
                 document.querySelectorAll('.stream-box')
@@ -283,7 +285,6 @@ function format_date(date) {
                 matchTime,
                 matchDate,
                 tournamentName,
-                tournamentImg: tournamentLogo,
                 streams,
                 mapVetoData,
                 rounds,
@@ -301,12 +302,12 @@ function format_date(date) {
               team2Score: match.team2Score,
               team1RoundScore: match.team1RoundScore,
               team2RoundScore: match.team2RoundScore,
+              tournamentLogo: match.tournamentLogo,
               team1Logo: matchDetails.team1Logo,
               team2Logo: matchDetails.team2Logo,
               matchTime: matchDetails.matchTime,
               matchDate: format_date(matchDetails.matchDate),
               tournamentName: matchDetails.tournamentName,
-              tournamentImg: matchDetails.tournamentImg,
               streams: matchDetails.streams,
               mapVetoData: matchDetails.mapVetoData,
               rounds: matchDetails.rounds,
@@ -387,7 +388,7 @@ function format_date(date) {
               date: new Date(results.matchDate).toString(),
               hour: results.matchTime,
               tournament: results.tournamentName,
-              tournament_img: results.tournamentImg,
+              tournamentLogo: results.tournamentLogo,
               teams: [
                 {
                   name: results.team1,
