@@ -388,7 +388,7 @@ function format_date(date) {
               date: new Date(results.matchDate).toString(),
               hour: results.matchTime,
               tournament: results.tournamentName,
-              tournamentLogo: results.tournamentLogo,
+              tournament_img: results.tournamentLogo,
               teams: [
                 {
                   name: results.team1,
